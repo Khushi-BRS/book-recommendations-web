@@ -18,20 +18,11 @@
     window.addEventListener("keypress", handler);
     return () => window.removeEventListener("keypress", handler);
   });
-
-  const onViewed = ({
-    detail: { id, views },
-  }: CustomEvent<{ id: number; views: number }>) => {
-    const bookIdx = books.findIndex((b) => b.id === id);
-    if (bookIdx !== -1) {
-      books[bookIdx].views = views;
-    }
-  };
 </script>
 
 <div class="book-container">
   {#each books as book (book.id)}
-    <Book {...book} on:viewed={onViewed} />
+    <Book {...book} />
   {/each}
 </div>
 

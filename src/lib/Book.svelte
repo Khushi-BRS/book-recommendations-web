@@ -1,6 +1,5 @@
 <script lang="ts">
   import { logView } from "./books";
-  import { createEventDispatcher } from "svelte";
 
   export let title: string;
   export let genre: string;
@@ -14,12 +13,9 @@
     return word.charAt(0).toUpperCase() + word.slice(1);
   };
 
-  const dispatch = createEventDispatcher();
-
   const handleClick = (ev: MouseEvent) => {
     logView(id).then(() => {
       views += 1;
-      dispatch("viewed", { id, views });
     });
 
     window.open(url, "_blank");
